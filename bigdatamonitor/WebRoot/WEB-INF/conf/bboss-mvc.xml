@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!-- 
+	microdatachain-mvc
+	microdatachain-mvccontroller
+	     controller
+-->
+<properties>
+<managerimport docbase="classpath::/conf/" file="microdatachain-mvc-*.xml" />-->
+	
+	
+    <property name="viewResolver" class="org.frameworkset.web.servlet.view.InternalResourceViewResolver" singlable="true">
+        <property name="viewClass" value="org.frameworkset.web.servlet.view.JstlView"/>
+        <property name="prefix" value=""/>
+        <property name="suffix" value=""/>
+    </property>
+
+
+    <property name="messageSource" class="org.frameworkset.spi.support.ReloadableResourceBundleMessageSource" singlable="true">
+        <property name="basename" value="/WEB-INF/messages"/>
+        <property name="cacheSeconds" value="-1"/>
+        <property name="useCodeAsDefaultMessage" value="true"/>
+    </property>
+    
+
+    <property name="beanNameHandlerMapping" class="org.frameworkset.web.servlet.handler.BeanNameUrlHandlerMapping" singlable="true">
+        <property name="alwaysUseFullPath" value="true"/>
+        <property name="handlerMap" refid="attr:handlerUrlMappingRegisterTable"/>
+    </property>
+
+    <property name="annotationHandlerMapping" class="org.frameworkset.web.servlet.handler.annotations.DefaultAnnotationHandlerMapping" singlable="true">
+        <property name="alwaysUseFullPath" value="true"/>
+        <property name="handlerMap" refid="attr:handlerUrlMappingRegisterTable"/>
+    </property>
+
+     <property name="handlerUrlMappingRegisterTable"
+         class="org.frameworkset.web.servlet.handler.HandlerUrlMappingRegisterTable" singlable="true"/>        
+     
+    
+ 
+    <property name="handlerMapping" class="org.frameworkset.web.servlet.handler.HandlerMappingsTable" singlable="true">       
+        <property name="handlerMappings">
+        	<list>
+        		<property refid="attr:beanNameHandlerMapping"/>
+        		<property refid="attr:annotationHandlerMapping"/>
+        	</list>
+        	<editor class="org.frameworkset.web.servlet.handler.HandlerMappingsTableEditor"/>
+        </property>
+
+        <property name="scanAllMappings" value="false"/>
+    </property>
+    
+
+      <property name="httpMessageConverters">
+     	<list>
+
+     		<property class="org.frameworkset.http.converter.json.MappingJacksonHttpMessageConverter"/>
+     		<property class="org.frameworkset.http.converter.StringHttpMessageConverter"/>
+     		
+     	</list>        
+     </property> 
+     
+     <property name="org.frameworkset.web.servlet.gloabel.HandlerInterceptors" >
+     	<list componentType="bean">
+     		<property class="org.frameworkset.web.interceptor.MyFirstInterceptor">
+     			<property name="patternsInclude">
+     				<list componentType="string">
+     					<property value="/**/*.htm"/>
+     				</list>
+     			</property>
+     			<property name="patternsExclude">
+     				<list componentType="string">
+     					<property value="/*.html"/>
+     				</list>
+     			</property>
+     			<property name="redirecturl" value="/login.jsp"/>
+     		</property>
+     	</list>
+     </property>
+</properties>
+
+

@@ -1,0 +1,11 @@
+/bin
+/distrib
+/build.log
+/bigdata.log
+/velocity.log
+/.settings/
+/.classpath
+/.project
+/build/
+/build.gradle.bak
+/.externalToolBuilders/

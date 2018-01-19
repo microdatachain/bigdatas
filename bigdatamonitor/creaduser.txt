@@ -1,0 +1,101 @@
+db.createUser(
+{
+user: "microdatachain",
+pwd: "microdatachain",
+roles:
+[
+{
+role: "dbAdmin",
+db: "sessiondb"
+}
+]
+}
+)
+db.createUser(
+{
+user: "microdatachain",
+pwd: "microdatachain",
+roles:
+[
+{
+role: "dbAdmin",
+db: "tokendb"
+}
+]
+}
+)
+
+db.createUser(
+{
+user: "microdatachain",
+pwd: "microdatachain",
+roles:
+[
+{
+role: "dbAdmin",
+db: "admin"
+}
+]
+}
+)
+
+db.grantRolesToUser(
+"microdatachain",
+[
+{
+role: "readWrite",db:"sessiondb"
+}
+])
+
+db.grantRolesToUser(
+"microdatachain",
+[
+{
+role: "readWrite",db:"tokendb"
+}
+])
+
+db.grantRolesToUser(
+"microdatachain",
+[
+{
+role: "readWrite",db:"admin"
+}
+])
+
+db.grantRolesToUser(
+"microdatachain",
+[
+{
+role: "dbOwner",db:"admin"
+}
+])
+
+db.grantRolesToUser(
+"microdatachain",
+[
+{
+role: "dbOwner",db:"sessiondb"
+}
+])
+
+db.grantRolesToUser(
+"microdatachain",
+[
+{
+role: "dbOwner",db:"tokendb"
+}
+])
+
+db.grantRolesToUser(
+"microdatachain",
+[
+{
+role: "backup",db:"admin"
+},
+{
+role: "restore",db:"admin"
+}
+])
+
+

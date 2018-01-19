@@ -1,0 +1,11 @@
+
+<properties>
+
+	<property name="/bigdata/*.page"
+		path:index="/bigdata/bigdataManager.jsp"	
+		path:viewJobHistoryStatic="/bigdata/jobHistoryStatic.jsp"			 
+		class="org.frameworkset.bigdata.impl.monitor.JobstaticMonitorController">
+	</property>
+
+	
+</properties>

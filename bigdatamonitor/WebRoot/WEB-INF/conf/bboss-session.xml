@@ -1,0 +1,14 @@
+
+<properties>
+
+	<property name="/session/sessionManager/*.page"
+		path:sessionManager="/session/sessionManager/sessionManager.jsp"
+		path:sessionList="/session/sessionManager/sessionList.jsp"
+		path:viewSessionInfo="/session/sessionManager/viewSessionInfo.jsp"
+		f:sessionService="attr:sessionService"
+		class="org.frameworkset.security.session.action.SessionManagerAction">
+	</property>
+
+	<property name="sessionService" 
+		class="org.frameworkset.security.session.service.impl.SessionManagerServiceImpl" />
+</properties>

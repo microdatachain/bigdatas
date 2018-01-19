@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding='UTF-8'?>
+
+
+	<properties>
+		
+		<property name="remoteevent.enabled" value="true"/>
+		<property name="event.destinction.type" value="Event.REMOTELOCAL"/>
+		
+	<property name="event.serivce" class="org.frameworkset.remote.EventRemoteServiceImpl"   />
+	<property name="eventRPCDispatcher" f:eventService="attr:event.serivce" class="org.frameworkset.remote.EventRPCDispatcher"   />
+	<property name="jgroup_protocols" use="tcp">
+	    <map componentType="bean"> 
+			<property name="udp" value="org/frameworkset/spi/jgroups/udp.xml"/> 
+			<property name="tcp" value="org/frameworkset/spi/jgroups/tcp.xml"/>
+			<property name="tcpnio" value="org/frameworkset/spi/jgroups/tcp-nio.xml"/>
+			 
+		</map> 
+	</property>    
+		
+	
+</properties>

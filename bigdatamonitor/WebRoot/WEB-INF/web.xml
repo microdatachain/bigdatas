@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+         version="2.4">
+
+    <display-name>Session Share Web Application</display-name>
+	
+	<listener>
+		<listener-class>org.frameworkset.web.listener.ApplicationLifeListener</listener-class>
+	</listener>
+    <filter>
+	    <filter-name>sessionFilter</filter-name>
+	    <filter-class>org.frameworkset.security.session.impl.SessionFilter</filter-class>
+	    
+    </filter>
+ 
+	 <filter-mapping>
+	   <filter-name>sessionFilter</filter-name>
+	   <url-pattern>*.jsp</url-pattern>
+	 </filter-mapping>
+	 <filter-mapping>
+	   <filter-name>sessionFilter</filter-name>
+	   <url-pattern>*.page</url-pattern>
+	 </filter-mapping>
+  <servlet>
+		<servlet-name>mvcdispather</servlet-name>
+		<servlet-class>org.frameworkset.web.servlet.DispatchServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/conf/microdatachain-*.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>iocLifeCycleEventListeners</param-name>
+			<param-value>org.frameworkset.bigdata.impl.monitor.BigdataIocLifeCycleEventListener</param-value>
+		</init-param>
+		
+		<init-param>
+			<param-name>iocLifeCycleEventListenerParams</param-name>
+			<param-value>adminasdatanode=true</param-value>
+		</init-param>
+		<load-on-startup>0</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>mvcdispather</servlet-name>
+		<url-pattern>*.page</url-pattern>
+	</servlet-mapping>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <security-constraint>
+		<web-resource-collection>
+			<url-pattern>/*</url-pattern>
+			<http-method>PUT</http-method>
+			<http-method>HEAD</http-method>
+			<http-method>OPTIONS</http-method>			
+			<http-method>DELETE</http-method>
+			<http-method>TRACE</http-method>			
+		</web-resource-collection>
+		<auth-constraint>
+		</auth-constraint>
+	</security-constraint>
+	
+  
+  
+</web-app>
